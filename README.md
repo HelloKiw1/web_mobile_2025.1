@@ -35,7 +35,7 @@ action -> rota
 Conteudo Teorico apresentado... *[Cap. 3 - Padrões Arquiteturais](https://www.notion.so/Cap-3-Padr-es-Arquiteturais-1c9ff6c3908a80a3b3dbed50d7400903?pvs=25)* e *[Cap. 4 - ORM](https://www.notion.so/Cap-4-ORM-1c9ff6c3908a80dbaddac08ebe1ac360?pvs=25)*
 
 **Criação do Ambiente Virtual:**
-1. `virtuallenv —version` 
+1. `virtualenv —version` 
 2. `virtualenv -p python3 virtual`
 
 **ATIVAR AMBIENTE VIRTUAL:** **`source virtual/bin/activate`**
