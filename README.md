@@ -17,7 +17,7 @@ Conteudo Teorico apresentado...
     - `css/styles.css`
 
 ##
-### **26 de mar - Aula 2 -**
+### **26 de mar - Aula 2 - Frameworks**
 
 Conteudo Teorico apresentado...
 *[Cap. 2 - Frameworks](https://www.notion.so/Cap-2-Frameworks-1c2ff6c3908a80e09d83fc6ea4a625c8?pvs=21)*
