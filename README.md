@@ -4,30 +4,31 @@
 ### **12 de mar - Aula 1 - Introdução a Materia**
 
 Conteudo Teorico apresentado...
-[Cap. 1 - Aspectos Introdutório](https://www.notion.so/Cap-1-Aspectos-Introdut-rio-1b4ff6c3908a80d0b87dfa3a0640f179?pvs=25)
+*[Cap. 1 - Aspectos Introdutório](https://www.notion.so/Cap-1-Aspectos-Introdut-rio-1b4ff6c3908a80d0b87dfa3a0640f179?pvs=25)*
 
 **Introdução ao Github, ao VsCode e ao HTML**
 ##
 ### **26 de mar - Aula 2 -**
 
 Conteudo Teorico apresentado...
-[Cap. 2 - Frameworks](https://www.notion.so/Cap-2-Frameworks-1c2ff6c3908a80e09d83fc6ea4a625c8?pvs=21)
+*[Cap. 2 - Frameworks](https://www.notion.so/Cap-2-Frameworks-1c2ff6c3908a80e09d83fc6ea4a625c8?pvs=21)*
 
-Criação da aula-2.html
+#### Criação da aula-2.html
 
 action -> rota
 
-method -> verbo:
+**method -> verbo:**
 
 post - enviar | get  - receber | put  - atualizar | delete - deletar
 ##
 ### **02 de abr - Aula 3 - Ambiente Virtual**
 
-Alem do Conteudo *[Cap. 3 - Padrões Arquiteturais](https://www.notion.so/Cap-3-Padr-es-Arquiteturais-1c9ff6c3908a80a3b3dbed50d7400903?pvs=25)* e *[Cap. 4 - ORM](https://www.notion.so/Cap-4-ORM-1c9ff6c3908a80dbaddac08ebe1ac360?pvs=25)*
+Conteudo Teorico apresentado... *[Cap. 3 - Padrões Arquiteturais](https://www.notion.so/Cap-3-Padr-es-Arquiteturais-1c9ff6c3908a80a3b3dbed50d7400903?pvs=25)* e *[Cap. 4 - ORM](https://www.notion.so/Cap-4-ORM-1c9ff6c3908a80dbaddac08ebe1ac360?pvs=25)*
 
 **Criação do Ambiente Virtual:**
 
 1º  ***virtuallenv —version***
+
 
 2º  ***virtualenv -p python3 virtual***
 
