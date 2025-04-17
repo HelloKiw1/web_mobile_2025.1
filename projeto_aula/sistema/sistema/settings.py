@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'veiculo.apps.VeiculoConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,9 +121,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR/'static/'
-STATICFILES_DIRS = [BASE_DIR/'sitema'/'static']
+STATICFILES_DIRS = [BASE_DIR/'sistema'/'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGUIN_URL = '/'
