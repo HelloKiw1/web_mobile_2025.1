@@ -4,7 +4,7 @@
 
 ---
 
-### 📅 **12 de março – Aula 1: Introdução à Matéria + Primeiros Arquivos**
+### **12 de março – Aula 1: Introdução à Matéria + Primeiros Arquivos**
 
 🔹 Conteúdo teórico apresentado:  
 [Cap. 1 – Aspectos Introdutórios](https://www.notion.so/Cap-1-Aspectos-Introdut-rio-1b4ff6c3908a80d0b87dfa3a0640f179?pvs=25)
@@ -22,7 +22,7 @@
 
 ---
 
-### 📅 **26 de março – Aula 2: Conceito de Frameworks + Métodos HTTP**
+### **26 de março – Aula 2: Conceito de Frameworks + Métodos HTTP**
 
 🔹 Conteúdo teórico apresentado:  
 [Cap. 2 – Frameworks](https://www.notion.so/Cap-2-Frameworks-1c2ff6c3908a80e09d83fc6ea4a625c8?pvs=21)
@@ -40,7 +40,7 @@
 
 ---
 
-### 📅 **02 de abril – Aula 3: Criação de Ambiente Virtual + Gitignore**
+### **02 de abril – Aula 3: Criação de Ambiente Virtual + Gitignore**
 
 🔹 Conteúdo teórico apresentado:  
 - [Cap. 3 – Padrões Arquiteturais](https://www.notion.so/Cap-3-Padr-es-Arquiteturais-1c9ff6c3908a80a3b3dbed50d7400903?pvs=25)  
@@ -60,7 +60,7 @@
 
 ---
 
-### 📅 **09 de abril – Aula 4: Prática com Ambiente Virtual + Introdução ao Django**
+### **09 de abril – Aula 4: Prática com Ambiente Virtual + Introdução ao Django**
 
 🔹 Conteúdo teórico apresentado:  
 - [Cap. 5 – Criação do Ambiente Virtual – Prática](https://www.notion.so/Cap-5-Cria-o-do-Ambiente-Virtual-Pratica-1c9ff6c3908a80e286a6cebaf861ee48?pvs=25)  
@@ -80,7 +80,7 @@
 
 ---
 
-### 📅 **16 de abril – Aula 5: Desenvolvimento com Django + Estrutura de Apps**
+### **16 de abril – Aula 5: Desenvolvimento com Django + Estrutura de Apps**
 
 🔹 Conteúdo teórico apresentado:  
 [Cap. 7 – Desenvolvimento com Django](https://www.notion.so/Cap-7-1d7ff6c3908a80a1b87ccb658588cc11?pvs=25)
