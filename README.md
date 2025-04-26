@@ -100,3 +100,88 @@
   ```
 - Adicionar o App no `settings.py` (em `INSTALLED_APPS`)
 - Diferença entre projeto e app no Django
+
+- ---
+
+### **23 de abril – Aula 6: Migrações no Banco de Dados + CRUD no Django**
+
+🔹 **Conteúdo teórico apresentado:**  
+[Cap. 8 – Migrações, Banco de Dados, CRUD e Class-Based Views](https://www.notion.so/Cap-8-1deff6c3908a80d68ff0e0ea301a04b3?pvs=25)
+
+🧪 **Atividades práticas realizadas:**
+
+- **Rodar as migrações no banco de dados:**
+  ```bash
+  python manage.py check
+  python manage.py makemigrations
+  python manage.py migrate
+  ```
+
+- **Revisão dos Métodos HTTP**:
+  ```
+  POST   → Create (Criar)
+  GET    → Read (Ler)
+  PUT    → Update (Atualizar)
+  DELETE → Delete (Excluir)
+  ```
+
+- **HTTP Status Codes principais**:
+  - **2xx – Success**  
+    200 OK
+  - **3xx – Redirection**  
+    301 Permanent Redirect | 302 Temporary Redirect | 304 Not Modified
+  - **4xx – Client Error**  
+    401 Unauthorized | 403 Forbidden | 404 Not Found | 405 Method Not Allowed
+  - **5xx – Server Error**  
+    501 Not Implemented | 502 Bad Gateway | 503 Service Unavailable | 504 Gateway Timeout
+
+- **Introdução às Class-Based Views (CBVs)**:
+  - As **CBVs** organizam a lógica de exibição (views) através de classes ao invés de funções, trazendo maior reaproveitamento de código e flexibilidade na construção das aplicações.
+
+- **Utilizando Mixins em Views**:
+  - Um **Mixin** é uma classe que adiciona funcionalidades específicas a uma outra classe através de herança múltipla.  
+  - Em Django, usamos mixins para adicionar métodos reutilizáveis às views sem repetir código.
+
+- **CRUD (Create, Read, Update, Delete)**:
+  - Conjunto de operações básicas para gerenciar dados em sistemas.
+    - **Create** → Criar um novo registro
+    - **Read** → Consultar dados
+    - **Update** → Atualizar dados existentes
+    - **Delete** → Excluir registros
+
+- **Na prática – Inserindo dados no banco de dados via Django Shell**:
+  
+  🔹 Acessando o shell:
+  ```bash
+  python manage.py shell
+  ```
+
+  🔹 Criando e salvando um novo objeto manualmente:
+  ```python
+  from veiculo.models import Veiculo
+  
+  primeiro = Veiculo()
+  primeiro.marca = 1
+  primeiro.modelo = 'A8'
+  primeiro.ano = 2022
+  primeiro.cor = 2
+  primeiro.combustivel = 3
+  primeiro.save()
+  ```
+
+  🔹 Criando um objeto de forma direta:
+  ```python
+  segundo = Veiculo(marca=4, modelo='F7', ano=2020, cor=6, combustivel=2)
+  segundo.save()
+  ```
+
+  🔹 Consultando informações:
+  - Contar o número de veículos cadastrados:
+    ```python
+    Veiculo.objects.all().count()
+    ```
+  - Filtrar veículos por marca:
+    ```python
+    Veiculo.objects.filter(marca=1).count()
+    ```
+
