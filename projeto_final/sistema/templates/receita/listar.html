@@ -1,1 +1,81 @@
-Listar
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listar - Projeto Final</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f7fc;
+    }
+    .header {
+      background-color: rgba(255, 193, 7, 0.75);
+      padding: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      color: black;
+    }
+    .header-principal {
+      background-color: #6d4c41;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+      position: relative;
+    }
+    .logout-btn {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .card-receita {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    Projeto Final
+  </div>
+
+    <div class="header-principal">
+      Cabeçalho Principal
+      <a href="logout/" class="btn btn-sm btn-light logout-btn">Logout</a>
+    </div>
+
+  <div class="container mt-4">
+    <div class="alert alert-info text-center">
+      {{ receitas|length }} receita(s) cadastrada(s)
+    </div>
+  
+    <div class="row">
+      {% for receita in receitas|slice:":6" %}
+        <div class="col-md-4">
+          <div class="card card-receita p-3">
+            <h5>{{ receita.nome }}</h5>
+            <h6>{{ receita.get_tipo_display }}</h6>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  
+    <div class="d-flex justify-content-end mt-3">
+      <a href="" class="btn btn-outline-primary">
+        Mais Receitas
+      </a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

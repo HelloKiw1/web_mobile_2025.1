@@ -3,8 +3,6 @@ from datetime import datetime
 from receita.consts import *
 
 class Receita(models.Model):
-    marca = models.SmallIntegerField(choices=OPCOES_TIPO)
-    cor = models.SmallIntegerField(choices=OPCOES_GOSTO)
-
-'''    modelo = models.CharField(max_length=100)
-    ano = models. IntegerField() '''    
+    nome = models.CharField(max_length=100, null=True, blank=True)
+    tipo = models.SmallIntegerField(choices=OPCOES_TIPO, null=True, blank=True)
+    gosto = models.SmallIntegerField(choices=OPCOES_GOSTO, null=True, blank=True)
