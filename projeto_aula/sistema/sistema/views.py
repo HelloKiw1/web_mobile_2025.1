@@ -37,4 +37,4 @@ class Logout(View):
     """
     def get(self, request):
         logout(request)
-        return redirect(settings.LOGIN_URL)
+        return redirect("/veiculo")

@@ -185,3 +185,11 @@
     Veiculo.objects.filter(marca=1).count()
     ```
 
+
+
+Explicou herança
+
+Add block base no projeto_sala:
+
+
+Add um botão para editar o veiculo
