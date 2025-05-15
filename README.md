@@ -86,85 +86,52 @@
 [Cap. 7 – Desenvolvimento com Django](https://www.notion.so/Cap-7-1d7ff6c3908a80a1b87ccb658588cc11?pvs=25)
 
 🧪 **Atividades práticas realizadas:**
-- Comando para criar um projeto Django:
-  ```bash
-  django-admin startproject nome_projeto
-  ```
-- Criação de um App com:
-  ```bash
-  python manage.py startapp nome_app
-  ```
-- Rodar o servidor local:
-  ```bash
-  python manage.py runserver
-  ```
-- Adicionar o App no `settings.py` (em `INSTALLED_APPS`)
-- Diferença entre projeto e app no Django
+- Criação de projeto e app Django
+- Comando para rodar o servidor local
+- Adicionar o App no `settings.py`
+- Diferença entre projeto e app
 
 ---
 
 ### **23 de abril – Aula 6: Migrações no Banco de Dados + CRUD no Django**
 
-🔹 **Conteúdo teórico apresentado:**  
+🔹 Conteúdo teórico apresentado:  
 [Cap. 8 – Migrações, Banco de Dados, CRUD e Class-Based Views](https://www.notion.so/Cap-8-1deff6c3908a80d68ff0e0ea301a04b3?pvs=25)
 
 🧪 **Atividades práticas realizadas:**
-
-- Rodar as migrações no banco de dados:
-  ```bash
-  python manage.py check
-  python manage.py makemigrations
-  python manage.py migrate
-  ```
-
-- Revisão dos Métodos HTTP:
-  ```
-  POST   → Create (Criar)
-  GET    → Read (Ler)
-  PUT    → Update (Atualizar)
-  DELETE → Delete (Excluir)
-  ```
-
-- HTTP Status Codes principais:
-  - 2xx – Success: 200 OK
-  - 3xx – Redirection: 301, 302, 304
-  - 4xx – Client Error: 401, 403, 404, 405
-  - 5xx – Server Error: 501, 502, 503, 504
-
-- Introdução às Class-Based Views (CBVs)
-
-- Utilizando Mixins em Views
-
-- CRUD (Create, Read, Update, Delete)
-
-- Inserção de dados via Django Shell:
-  ```python
-  from veiculo.models import Veiculo
-  v = Veiculo(marca=1, modelo='A8', ano=2022, cor=2, combustivel=3)
-  v.save()
-  ```
+- Rodar as migrações no banco de dados
+- Revisão dos métodos HTTP e códigos de status
+- Introdução às Class-Based Views e Mixins
+- Inserção e consulta de dados no Django Shell
 
 ---
 
-### **07 de maio – Aula 7: Herança em Templates + Edição e Cadastro de Veículos**
+### **07 de maio – Aula 7: Herança de Templates + Formulários + Views com Classe**
 
-🔹 **Conteúdo teórico apresentado:**  
-[Cap. 10 – Herança e Templates no Django](https://www.notion.so/Cap-10-1ecff6c3908a8010a3eccf29e941b794?pvs=4)
+🔹 Conteúdo teórico apresentado:  
+- [Cap. 9 – Herança de Templates](https://www.notion.so/Cap-9-1e5ff6c3908a806b99a8d75d68792b60?pvs=4)  
+- [Cap. 10 – Views com Classe e Formulários](https://www.notion.so/Cap-10-1ecff6c3908a8010a3eccf29e941b794?pvs=4)
 
 🧪 **Atividades práticas realizadas:**
-- Explicação do conceito de herança em templates
-- Criação de um `base.html`
-- Implementação da funcionalidade para **editar veículo**
-- Implementação da funcionalidade de **cadastrar novo veículo**
-- Adição de campo de **imagem** para cada veículo
+- Estruturação de templates com `base.html` e blocos `{% block %}`
+- Criação do `forms.py` e formulário com ModelForm
+- Implementação das views com CreateView
+- Adição das rotas no `urls.py`
+- Criação do template `novo.html`
+- Adição de imagens aos veículos
 
 ---
 
-### **14 de maio – Aula 8: Autenticação + Cadastro com Login Obrigatório**
+### **14 de maio – Aula 8: Restrições de Acesso + Editar e Deletar Veículos**
 
-🔹 **Conteúdo teórico apresentado:**  
-[Cap. 11 – Autenticação e Requisição de Login](https://www.notion.so/Cap-11-1f3ff6c3908a8011a838c504d157c6cc?pvs=4)
+🔹 Conteúdo teórico apresentado:  
+[Cap. 11 – Controle de Acesso e Funcionalidades Avançadas](https://www.notion.so/Cap-11-1f3ff6c3908a8011a838c504d157c6cc?pvs=4)
 
 🧪 **Atividades práticas realizadas:**
-- Implementação de **requerimento de login** para acessar certas rotas
-- Adição de **cadastro de novos veículos** protegido por autenticação
+- Implementação da verificação de login (`LoginRequiredMixin`)
+- Definição da URL de login no `settings.py`
+- Criação da view `EditarVeiculos` com `UpdateView`
+- Rota para editar veículos adicionada ao `urls.py`
+- Criação de novo app `anuncio`
+- Adição de `ForeignKey`
+- Melhoria do controle de acesso e das funcionalidades CRUD
