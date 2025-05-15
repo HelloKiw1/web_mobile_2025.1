@@ -7,7 +7,7 @@
 ### **12 de março – Aula 1: Introdução à Matéria + Primeiros Arquivos**
 
 🔹 Conteúdo teórico apresentado:  
-[Cap. 1 – Aspectos Introdutórios](https://www.notion.so/Cap-1-Aspectos-Introdut-rio-1b4ff6c3908a80d0b87dfa3a0640f179?pvs=25)
+[Cap. 1 – Aspectos Introdutórios](https://www.notion.so/Cap-1-Aspectos-Introd-rio-1b4ff6c3908a80d0b87dfa3a0640f179?pvs=25)
 
 🧪 **Atividades práticas realizadas:**
 - Criação da conta no GitHub
@@ -101,7 +101,7 @@
 - Adicionar o App no `settings.py` (em `INSTALLED_APPS`)
 - Diferença entre projeto e app no Django
 
-- ---
+---
 
 ### **23 de abril – Aula 6: Migrações no Banco de Dados + CRUD no Django**
 
@@ -110,14 +110,14 @@
 
 🧪 **Atividades práticas realizadas:**
 
-- **Rodar as migrações no banco de dados:**
+- Rodar as migrações no banco de dados:
   ```bash
   python manage.py check
   python manage.py makemigrations
   python manage.py migrate
   ```
 
-- **Revisão dos Métodos HTTP**:
+- Revisão dos Métodos HTTP:
   ```
   POST   → Create (Criar)
   GET    → Read (Ler)
@@ -125,77 +125,46 @@
   DELETE → Delete (Excluir)
   ```
 
-- **HTTP Status Codes principais**:
-  - **2xx – Success**  
-    200 OK
-  - **3xx – Redirection**  
-    301 Permanent Redirect | 302 Temporary Redirect | 304 Not Modified
-  - **4xx – Client Error**  
-    401 Unauthorized | 403 Forbidden | 404 Not Found | 405 Method Not Allowed
-  - **5xx – Server Error**  
-    501 Not Implemented | 502 Bad Gateway | 503 Service Unavailable | 504 Gateway Timeout
+- HTTP Status Codes principais:
+  - 2xx – Success: 200 OK
+  - 3xx – Redirection: 301, 302, 304
+  - 4xx – Client Error: 401, 403, 404, 405
+  - 5xx – Server Error: 501, 502, 503, 504
 
-- **Introdução às Class-Based Views (CBVs)**:
-  - As **CBVs** organizam a lógica de exibição (views) através de classes ao invés de funções, trazendo maior reaproveitamento de código e flexibilidade na construção das aplicações.
+- Introdução às Class-Based Views (CBVs)
 
-- **Utilizando Mixins em Views**:
-  - Um **Mixin** é uma classe que adiciona funcionalidades específicas a uma outra classe através de herança múltipla.  
-  - Em Django, usamos mixins para adicionar métodos reutilizáveis às views sem repetir código.
+- Utilizando Mixins em Views
 
-- **CRUD (Create, Read, Update, Delete)**:
-  - Conjunto de operações básicas para gerenciar dados em sistemas.
-    - **Create** → Criar um novo registro
-    - **Read** → Consultar dados
-    - **Update** → Atualizar dados existentes
-    - **Delete** → Excluir registros
+- CRUD (Create, Read, Update, Delete)
 
-- **Na prática – Inserindo dados no banco de dados via Django Shell**:
-  
-  🔹 Acessando o shell:
-  ```bash
-  python manage.py shell
-  ```
-
-  🔹 Criando e salvando um novo objeto manualmente:
+- Inserção de dados via Django Shell:
   ```python
   from veiculo.models import Veiculo
-  
-  primeiro = Veiculo()
-  primeiro.marca = 1
-  primeiro.modelo = 'A8'
-  primeiro.ano = 2022
-  primeiro.cor = 2
-  primeiro.combustivel = 3
-  primeiro.save()
+  v = Veiculo(marca=1, modelo='A8', ano=2022, cor=2, combustivel=3)
+  v.save()
   ```
 
-  🔹 Criando um objeto de forma direta:
-  ```python
-  segundo = Veiculo(marca=4, modelo='F7', ano=2020, cor=6, combustivel=2)
-  segundo.save()
-  ```
+---
 
-  🔹 Consultando informações:
-  - Contar o número de veículos cadastrados:
-    ```python
-    Veiculo.objects.all().count()
-    ```
-  - Filtrar veículos por marca:
-    ```python
-    Veiculo.objects.filter(marca=1).count()
-    ```
+### **07 de maio – Aula 7: Herança em Templates + Edição e Cadastro de Veículos**
 
-Ultima aula: 
-07 de mai
+🔹 **Conteúdo teórico apresentado:**  
+[Cap. 10 – Herança e Templates no Django](https://www.notion.so/Cap-10-1ecff6c3908a8010a3eccf29e941b794?pvs=4)
 
-Explicou herança
-Add block base no projeto_sala:
-Add um botão para editar o veiculo
-  Add Novo Veiculo
-  Add Imagem
-_____
+🧪 **Atividades práticas realizadas:**
+- Explicação do conceito de herança em templates
+- Criação de um `base.html`
+- Implementação da funcionalidade para **editar veículo**
+- Implementação da funcionalidade de **cadastrar novo veículo**
+- Adição de campo de **imagem** para cada veículo
 
-14 de mai
+---
 
-Add Requerimento de Login
-Add uma fucionalidade de add veiculos novos
+### **14 de maio – Aula 8: Autenticação + Cadastro com Login Obrigatório**
+
+🔹 **Conteúdo teórico apresentado:**  
+[Cap. 11 – Autenticação e Requisição de Login](https://www.notion.so/Cap-11-1f3ff6c3908a8011a838c504d157c6cc?pvs=4)
+
+🧪 **Atividades práticas realizadas:**
+- Implementação de **requerimento de login** para acessar certas rotas
+- Adição de **cadastro de novos veículos** protegido por autenticação
