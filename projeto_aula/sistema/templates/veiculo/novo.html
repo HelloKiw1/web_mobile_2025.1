@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block titulo %}Editar Veículo - {{ object.modelo }}{% endblock %}
+{% block titulo %}Cadastrar Veículo{% endblock %}
 
 {% block conteudo %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="p-5 shadow rounded" style="max-width: 600px; width: 100%; background-color: #ffffff;">
 
     <h3 class="text-center text-uppercase mb-4" style="letter-spacing: 1px; color: #1e1e1e;">
-      Editar Veículo: <span class="text-orange">{{ object.modelo }}</span>
+      Cadastrar Novo Veículo
     </h3>
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
       {{ form.non_field_errors }}
 
       {% for field in form %}
         <div class="mb-3">
-          <label class="form-label" style="font-weight: 600; color: #333;">{{ field.label }}</label>
+          <label class="form-label fw-bold" style="color: #333;">{{ field.label }}</label>
           {{ field }}
           {% if field.errors %}
-            <div class="text-danger small">
+            <div class="text-danger small mt-1">
               {% for error in field.errors %}
                 {{ error }}<br>
               {% endfor %}
@@ -29,19 +29,20 @@
         </div>
       {% endfor %}
 
+      <!-- Botões -->
       <div class="d-flex justify-content-between mt-4">
         <a href="{% url 'listar-veiculos' %}" class="btn btn-light" style="border: 1px solid #ccc; font-weight: bold;">
           <i class="fas fa-arrow-left me-1"></i> Voltar
         </a>
         <button type="submit" class="btn btn-primary-custom">
-          <i class="fas fa-save me-1"></i> Salvar Alterações
+          <i class="fas fa-save me-1"></i> Cadastrar
         </button>
       </div>
     </form>
 
     {% if form.errors %}
       <div class="alert alert-danger mt-4 text-center">
-        <strong>Erro ao atualizar o veículo. Verifique os campos preenchidos.</strong>
+        <strong>Erro ao cadastrar. Verifique os campos preenchidos.</strong>
       </div>
     {% endif %}
 

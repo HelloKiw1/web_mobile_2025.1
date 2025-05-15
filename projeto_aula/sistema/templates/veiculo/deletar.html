@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo %}Excluir Veículo - {{ object.modelo }}{% endblock %}
+
+{% block conteudo %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="text-center p-5 shadow rounded" style="max-width: 500px; width: 100%; background-color: #f9f9f9;">
+    
+    <h3 class="mb-4 text-uppercase" style="color: #1e1e1e; letter-spacing: 1px;">Tem certeza que deseja excluir?</h3>
+    <p class="lead">Veículo: <strong class="text-orange">{{ object.modelo }}</strong></p>
+    
+    <form method="post" class="mt-4">
+      {% csrf_token %}
+      <input type="submit" value="Confirmar Exclusão" class="btn btn-danger btn-block mb-2" style="font-weight: bold; text-transform: uppercase;">
+      <a href="{% url 'listar-veiculos' %}" class="btn btn-light btn-block" style="border: 1px solid #ccc; font-weight: bold;">Cancelar</a>
+    </form>
+    
+  </div>
+</div>
+{% endblock %}

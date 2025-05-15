@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}Sistema{% endblock %}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+
+  <!-- Estilos e ícones -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f4f7fc;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding-top: 30px;
+    }
+
+    .header {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #111;
+    }
+
+    .header-principal {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 20px 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .header-principal .btn {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 0;
+    }
+
+    .header-logo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .header-logo img {
+      height: 60px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-primary-custom {
+      background-color: #f7931e;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #e67e00;
+    }
+
+    .btn-light {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .card-veiculo {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .card-veiculo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-img-top {
+      border-radius: 8px 8px 0 0;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .text-orange {
+      color: #f7931e;
+    }
+
+    .img-veiculo {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .img-quadrada {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    /* ======= Rodapé ======= */
+    .footer {
+      font-size: 20px;
+      color: #6c757d;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho Superior -->
+  <div class="header">
+    {% block menu_projeto %}
+      Projeto em Sala
+    {% endblock %}
+  </div>
+
+  <!-- Cabeçalho Principal -->
+  <div class="header-principal">
+
+    <!-- Botões à esquerda -->
+    <div class="d-flex gap-2">
+      <a href="/anuncios/" class="btn btn-sm btn-outline-light ">
+        <i class="fas fa-bullhorn"></i> Anúncios
+      </a>
+      <a href="/veiculo/exibir" class="btn btn-sm btn-outline-light">
+        <i class="fas fa-car"></i> Ver mais veículos
+      </a>
+    </div>
+
+    <!-- Logo central -->
+    <div class="header-logo">
+      <a href="/">
+        <img src="{% static 'img/logo.png' %}" alt="Logo do sistema">
+      </a>
+    </div>
+
+    <!-- Botões à direita -->
+    <div class="header-actions">
+      <a href="/veiculo/novo" class="btn btn-sm btn-primary-custom">
+        <i class="fas fa-plus"></i> Adicionar Veículo
+      </a>
+      <a href="/logout/" class="btn btn-sm btn-light">
+        Logout
+      </a>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="container">
+    {% block conteudo %}
+    {% endblock %}
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer mt-5 py-3 text-center text-muted">
+    <div class="container">
+      <p class="mb-1">Código feito por <strong>HelloKiw1</strong></p>
+      <p class="mb-1">Durante a disciplina <em>Web_Mobile_2025.1</em></p>
+      <p class="mb-0">
+        <a href="https://github.com/HelloKiw1/web_mobile_2025.1" target="_blank">
+          🔗 Ver projeto no GitHub
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

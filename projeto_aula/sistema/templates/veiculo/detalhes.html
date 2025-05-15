@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Detalhes do Veículo{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+  <div class="card mx-auto shadow" style="max-width: 500px;">
+    
+    {% if object.foto %}
+      <img src="{{ object.foto.url }}" class="card-img-top" alt="{{ object.modelo }}" style="object-fit: cover; height: 250px;">
+    {% else %}
+      <img src="{% static 'img/sem-imagem.png' %}" class="card-img-top" alt="Sem imagem" style="object-fit: cover; height: 250px;">
+    {% endif %}
+
+    <div class="card-body text-center">
+      <h4 class="card-title">{{ object.modelo }} ({{ object.ano }})</h4>
+      <p class="card-text"><strong>Marca:</strong> {{ object.get_marca_display }}</p>
+      <p class="card-text"><strong>Combustível:</strong> {{ object.get_combustivel_display }}</p>
+      <p class="card-text"><strong>Cor:</strong> {{ object.get_cor_display }}</p>
+      <a href="{% url 'listar-veiculos' %}" class="btn btn-outline-secondary mt-3">
+        Voltar à listagem
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -185,11 +185,17 @@
     Veiculo.objects.filter(marca=1).count()
     ```
 
-
+Ultima aula: 
+07 de mai
 
 Explicou herança
-
 Add block base no projeto_sala:
-
-
 Add um botão para editar o veiculo
+  Add Novo Veiculo
+  Add Imagem
+_____
+
+14 de mai
+
+Add Requerimento de Login
+Add uma fucionalidade de add veiculos novos

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'veiculo.apps.VeiculoConfig',
+    'anuncio.apps.AnuncioConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -128,5 +130,8 @@ STATICFILES_DIRS = [BASE_DIR/'sistema'/'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Configurações para arquivos de mídia
+MEDIA_URL = '/veiculo/'  # URL que será usada para acessar as imagens
+MEDIA_ROOT = BASE_DIR / ''
 
 LOGUIN_URL = '/'

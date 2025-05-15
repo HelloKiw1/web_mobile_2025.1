@@ -9,3 +9,6 @@ class Veiculo(models.Model):
 
     modelo = models.CharField(max_length=100)
     ano = models. IntegerField()
+
+
+    foto = models.ImageField(blank=True, null=True, upload_to='veiculo/fotos')

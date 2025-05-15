@@ -1,113 +1,48 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listar - Projeto em Sala</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% extends 'base.html' %}
+{% load static %}
 
-  <style>
-    body {
-      background-color: #f4f7fc;
-    }
-    .header {
-      background-color: rgba(255, 193, 7, 0.75);
-      padding: 10px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 16px;
-      color: black;
-    }
-    .header-principal {
-      background-color: #210368;
-      padding: 15px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: white;
-      position: relative;
-    }
-    .logout-btn {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .card-veiculo {
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .card-img-top {
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
+{% block titulo %}Veículos Cadastrados{% endblock %}
 
-  <div class="header">Projeto em Sala</div>
+{% block conteudo %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Veículos Cadastrados</h2>
 
-  <div class="header-principal">
-    Cabeçalho Principal
-    <a href="/logout/" class="btn btn-sm btn-light logout-btn">Logout</a>
-  </div>
+    <div class="row justify-content-center">
+        {% for veiculo in object_list %}
+        <div class="col-md-4 mb-4">
+          <div class="card card-veiculo shadow-sm h-100">
+                    {% if veiculo.foto %}
+                        <img src="{{ veiculo.foto.url }}" class="card-img-top img-quadrada" alt="{{ veiculo.modelo }}">
+                    {% else %}
+                        <img src="{% static 'img/sem-imagem.png' %}" class="card-img-top img-quadrada" alt="Imagem padrão">
+                    {% endif %}
+                    
+                    <div class="card-body p-2 text-center">
+                        <h6 class="card-title mb-1">{{ veiculo.modelo }}</h6>
+                        <p class="card-text small mb-1">Marca: {{ veiculo.get_marca_display }}</p>
+                        <p class="card-text small mb-3">Ano: {{ veiculo.ano }}</p>
 
-  <div class="container mt-4">
+                        <!-- Botões igualmente distribuídos -->
+                        <div class="d-flex justify-content-between w-100 gap-2">
+                            <a href="{% url 'detalhar-veiculo' veiculo.id %}" class="btn btn-sm btn-info flex-fill text-white">
+                                <i class="fas fa-search"></i>
+                            </a>
+                            <a href="{% url 'editar-veiculos' veiculo.id %}" class="btn btn-sm btn-primary flex-fill">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{% url 'deletar-veiculos' veiculo.id %}" class="btn btn-sm btn-danger flex-fill">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
 
-    {% if veiculos %}
-      <div class="alert alert-info text-center">
-        {{ veiculos|length }} veículo(s) cadastrado(s)
-      </div>
-
-      <div class="row">
-        {% for veiculo in veiculos|slice:":6" %}
-          <div class="col-md-4">
-            <div class="card card-veiculo p-3">
-              
-              {% if veiculo.foto %}
-                <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="Foto de {{ veiculo.modelo }}">
-              {% else %}
-                <div class="text-muted text-center mb-2">Veículo sem foto</div>
-              {% endif %}
-
-              <h5>{{ veiculo.modelo }} ({{ veiculo.ano }})</h5>
-              <h6><strong>Marca:</strong> {{ veiculo.get_marca_display }}</h6>
-              <h6><strong>Combustível:</strong> {{ veiculo.get_combustivel_display }}</h6>
-              <h6><strong>Cor:</strong> {{ veiculo.get_cor_display }}</h6>
-
-              <div class="mt-3 d-flex justify-content-between">
-                <a href="/veiculo/editar/{{ veiculo.id }}" class="btn btn-primary btn-sm">
-                  <i class="fas fa-edit"></i> Editar
-                </a>
-                <a href="/veiculo/deletar/{{ veiculo.id }}" class="btn btn-danger btn-sm">
-                  <i class="fas fa-trash"></i> Excluir
-                </a>
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Nenhum veículo cadastrado.</p>
+            </div>
         {% endfor %}
-      </div>
-
-      <div class="d-flex justify-content-end mt-3">
-        <a href="/veiculo/listar" class="btn btn-outline-primary">
-          Mais veículos
-        </a>
-      </div>
-    {% else %}
-      <div class="alert alert-warning text-center">
-        Nenhum veículo cadastrado.
-      </div>
-    {% endif %}
-
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    </div>
+</div>
+{% endblock %}
