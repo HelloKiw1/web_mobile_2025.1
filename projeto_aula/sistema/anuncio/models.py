@@ -1,3 +1,5 @@
 from django.db import models
+from datetime import datetime
 
-# Create your models here.
+class Anuncio(models.Model):
+    nome = models.CharField(max_length=100)
