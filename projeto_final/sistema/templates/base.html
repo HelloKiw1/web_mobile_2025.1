@@ -29,26 +29,26 @@
 
             <div>
                 <a class="nav-link d-inline" href="{% url 'listar-receita' %}">Início</a>
-                <a class="nav-link d-inline" href="#">Sobre</a>
-                <a class="nav-link d-inline" href="#">Contato</a>
+                <a class="nav-link d-inline" href="{% url 'sobre' %}">Sobre</a>
+                <a class="nav-link d-inline" href="{% url 'contato' %}">Contato</a>
                 <a href="/logout/" class="btn btn-sm btn-primary-custom d-inline">Logout</a>
                   <!-- Badge sobreposto -->
-  {% if user.is_authenticated %}
-    <div style="
-      position: absolute;
-      top: 15px;
-      right: 45px;
-      background-color: black;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    ">
-      {{ user.username }}
-    </div>
-  {% endif %}
+                {% if user.is_authenticated %}
+                    <a nav-link d-inline style="
+                    position: absolute;
+                    top: 15px;
+                    right: 45px;
+                    background-color: black;
+                    color: white;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                    ">
+                    {{ user.username }}
+            </a>
+                {% endif %}
 
             </div>
         </div>

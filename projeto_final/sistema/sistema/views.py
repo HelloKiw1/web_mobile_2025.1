@@ -1,40 +1,43 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.conf import settings
+
 
 class Login(View):
-
     def get(self, request):
-        contexto={'mensagem': ''}
+        contexto = {'mensagem': ''}
         if request.user.is_authenticated:
             return redirect("/receita")
         else:
-            return render(request, 'autenticacao.html', contexto)   
+            return render(request, 'autenticacao.html', contexto)
 
     def post(self, request):
-        
-        #Obtem as crendenciais de autenticação do formulário
         usuario = request.POST.get('usuario', None)
         senha = request.POST.get('senha', None)
 
-        #Verificar as crendencias de autenticação fornecidas
         user = authenticate(request, username=usuario, password=senha)
         if user is not None:
-
-        #Verificar se o usuario esta ativo
             if user.is_active:
                 login(request, user)
                 return redirect("/receita")
+            return render(request, 'autenticacao.html', {'mensagem': 'Usuário inativo'})
 
-            return render(request, 'autenticacao.html', {'mensagem': ' Usuario inatico'})
-    
-        return render(request, 'autenticacao.html', {'mensagem': 'Usuario ou Senha Invalidos'})
+        return render(request, 'autenticacao.html', {'mensagem': 'Usuário ou Senha Inválidos'})
+
 
 class Logout(View):
-    """
-    Class Based View para realizar logout de usuarios.
-    """
     def get(self, request):
         logout(request)
         return redirect("/")
+
+
+# ✅ Página Sobre
+class Sobre(View):
+    def get(self, request):
+        return render(request, 'sobre.html')
+
+
+# ✅ Página Contato
+class Contato(View):
+    def get(self, request):
+        return render(request, 'contato.html')
