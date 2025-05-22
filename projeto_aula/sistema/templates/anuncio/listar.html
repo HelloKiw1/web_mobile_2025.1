@@ -1,1 +1,48 @@
-Listar
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Veículos Cadastrados{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Anuncios Cadastrados</h2>
+
+    <div class="row justify-content-center">
+        {% for veiculo in object_list %}
+        <div class="col-md-4 mb-4">
+          <div class="card card-veiculo shadow-sm h-100">
+                    {% if veiculo.foto %}
+                        <img src="{{ veiculo.foto.url }}" class="card-img-top img-quadrada" alt="{{ veiculo.modelo }}">
+                    {% else %}
+                        <img src="{% static 'img/sem-imagem.png' %}" class="card-img-top img-quadrada" alt="Imagem padrão">
+                    {% endif %}
+                    
+                    <div class="card-body p-2 text-center">
+                        <h6 class="card-title mb-1">{{ veiculo.modelo }}</h6>
+                        <p class="card-text small mb-1">Marca: {{ veiculo.get_marca_display }}</p>
+                        <p class="card-text small mb-3">Ano: {{ veiculo.ano }}</p>
+
+                        <!-- Botões igualmente distribuídos -->
+                        <div class="d-flex justify-content-between w-100 gap-2">
+                            <a href="{% url 'detalhar-veiculo' veiculo.id %}" class="btn btn-sm btn-info flex-fill text-white">
+                                <i class="fas fa-search"></i>
+                            </a>
+                            <a href="{% url 'editar-veiculos' veiculo.id %}" class="btn btn-sm btn-primary flex-fill">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{% url 'deletar-veiculos' veiculo.id %}" class="btn btn-sm btn-danger flex-fill">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Nenhum anuncio cadastrado.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

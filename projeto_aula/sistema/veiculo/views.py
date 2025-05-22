@@ -9,12 +9,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
-
     model = Veiculo
     context_object_name = 'veiculos'
     template_name = 'veiculo/listar.html'
 
-class CriarVeiculos(CreateView):
+
+class CriarVeiculos(LoginRequiredMixin, CreateView):
     
     model = Veiculo
     form_class= FormularioVeiculo
