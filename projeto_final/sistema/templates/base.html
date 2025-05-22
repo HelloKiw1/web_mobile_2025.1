@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Receitas Caseiras{% endblock %}</title>
+
+    <!-- Favicon dinâmico -->
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="{% static 'img/favicon/favicon1.png' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img id="nav-icon" src="{% static 'img/favicon/favicon1.png' %}" 
+                     alt="Ícone" 
+                     style="height: 60px; width: 60px; margin-right: 10px;">
+                <a class="navbar-brand" href="{% url 'listar-receita' %}">RECEITAS</a>
+            </div>
+
+            <div>
+                <a class="nav-link d-inline" href="{% url 'listar-receita' %}">Início</a>
+                <a class="nav-link d-inline" href="#">Sobre</a>
+                <a class="nav-link d-inline" href="#">Contato</a>
+                <a href="/logout/" class="btn btn-sm btn-primary-custom d-inline">Logout</a>
+                  <!-- Badge sobreposto -->
+  {% if user.is_authenticated %}
+    <div style="
+      position: absolute;
+      top: 15px;
+      right: 45px;
+      background-color: black;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    ">
+      {{ user.username }}
+    </div>
+  {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        {% block conteudo %}{% endblock %}
+    </div>
+
+    <div class="footer">
+        © 2025 - Receitas Caseiras 🍰 | Feito com carinho.
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para favicon e navbar dinâmicos -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const favicons = [
+                "{% static 'img/favicon/favicon1.png' %}",
+                "{% static 'img/favicon/favicon2.png' %}",
+                "{% static 'img/favicon/favicon3.png' %}",
+                "{% static 'img/favicon/favicon4.png' %}"
+            ];
+
+            // Favicon aleatório
+            const randomFavicon = favicons[Math.floor(Math.random() * favicons.length)];
+            document.getElementById("dynamic-favicon").href = randomFavicon;
+
+            // Ícone na navbar aleatório
+            const randomNavIcon = favicons[Math.floor(Math.random() * favicons.length)];
+            document.getElementById("nav-icon").src = randomNavIcon;
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

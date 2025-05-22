@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Cadastrar Receita{% endblock %}
+
+{% block conteudo %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="p-5 shadow rounded" style="max-width: 600px; width: 100%; background-color: #fff;">
+
+        <h3 class="text-center text-uppercase mb-4" style="letter-spacing: 1px;">
+            Cadastrar Nova Receita
+        </h3>
+
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold" style="color: #000;">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger small mt-1">
+                            {% for error in field.errors %}
+                                {{ error }}<br>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'listar-receita' %}" 
+                   class="btn btn-light" 
+                   style="border: 2px solid #000; font-weight: bold;">
+                    <i class="fas fa-arrow-left me-1"></i> Voltar
+                </a>
+                <button type="submit" class="btn btn-primary-custom">
+                    <i class="fas fa-save me-1"></i> Cadastrar
+                </button>
+            </div>
+        </form>
+
+        {% if form.errors %}
+            <div class="alert alert-danger mt-4 text-center">
+                <strong>Erro ao cadastrar. Verifique os campos preenchidos.</strong>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

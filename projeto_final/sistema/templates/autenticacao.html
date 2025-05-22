@@ -1,55 +1,61 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Projeto Final</title>
+  <title>Login - Receitas Caseiras</title>
+
+  <link rel="icon" href="{% static 'img/favicon/favicon1.png' %}">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f7fc;
-    }
-    .login-container {
-      max-width: 400px;
-      margin: 50px auto;
-      padding: 30px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .header {
-      background-color: rgba(255, 193, 7, 0.75);
-      padding: 5px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 15px;
-      color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
-  <div class="header">
-    Projeto Final
+  <div class="header-top">
+    🍳 Receitas Caseiras — Sabor & Aconchego
   </div>
 
-  <div class="login-container">
-    <h2 class="text-center mb-4">Login</h2>
-    <form method="POST" action="">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="username">Usuário</label>
-        <input type="text" class="form-control" id="username" name="usuario" placeholder="Digite seu usuário" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password" name="senha" placeholder="Digite sua senha" required>
-      </div>
-      {% if mensagem %}
-      <div class="alert alert-danger text-center">{{ mensagem }}</div>
-      {% endif %}
-      <button type="submit" class="btn btn-primary btn-block mt-4">Entrar</button>
-    </form>
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="shadow p-5 rounded" style="max-width: 400px; width: 100%; background-color: #fff; border: 3px solid #000;">
+
+      <h2 class="text-center mb-4 text-uppercase" style="letter-spacing: 1px;">
+        Login
+      </h2>
+
+      <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="username" class="form-label fw-bold" style="color: #000;">Usuário</label>
+          <input type="text" id="username" name="usuario" class="form-control"
+                 placeholder="Digite seu usuário" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fw-bold" style="color: #000;">Senha</label>
+          <input type="password" id="password" name="senha" class="form-control"
+                 placeholder="Digite sua senha" required>
+        </div>
+
+        {% if mensagem %}
+          <div class="alert alert-danger text-center">
+            {{ mensagem }}
+          </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary-custom btn-block w-100 mt-3">
+          <i class="fas fa-sign-in-alt"></i> Entrar
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 - Receitas Caseiras 🍰 | Feito com carinho.
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

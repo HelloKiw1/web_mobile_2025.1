@@ -1,81 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listar - Projeto Final</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f7fc;
-    }
-    .header {
-      background-color: rgba(255, 193, 7, 0.75);
-      padding: 10px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 16px;
-      color: black;
-    }
-    .header-principal {
-      background-color: #6d4c41;
-      padding: 15px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: white;
-      position: relative;
-    }
-    .logout-btn {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .card-receita {
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-  <div class="header">
-    Projeto Final
-  </div>
+{% block titulo %}Receitas Cadastradas{% endblock %}
 
-    <div class="header-principal">
-      Cabeçalho Principal
-      <a href="logout/" class="btn btn-sm btn-light logout-btn">Logout</a>
+{% block conteudo %}
+<div class="container">
+    {% if receitas %}
+
+        <!-- Botões alinhados à direita -->
+<div class="d-flex justify-content-end mb-4 gap-3">
+    
+    <div class="alert mb-0 d-flex align-items-center" style="height: 38px;">
+        <i class="fas fa-cookie-bite me-2"></i>
+        {{ object_list|length }} receita(s) cadastrada(s)
     </div>
 
-  <div class="container mt-4">
-    <div class="alert alert-info text-center">
-      {{ receitas|length }} receita(s) cadastrada(s)
-    </div>
-  
-    <div class="row">
-      {% for receita in receitas|slice:":6" %}
-        <div class="col-md-4">
-          <div class="card card-receita p-3">
-            <h5>{{ receita.nome }}</h5>
-            <h6>{{ receita.get_tipo_display }}</h6>
-          </div>
+    <a href="{% url 'criar-receita' %}" class="btn btn-primary-custom">
+        <i class="fas fa-plus"></i> Nova Receita
+    </a>
+
+    <a href="{% url 'exibir-receitas' %}" class="btn btn-primary-custom">
+        <i class="fas fa-list"></i> Ver Mais Receitas
+    </a>
+    
+</div>
+
+        <!-- Grade de 3 colunas e 2 linhas (6 receitas mais recentes) -->
+        <div class="row">
+            {% for receita in receitas|dictsortreversed:"id"|slice:":6" %}
+                <div class="col-12 col-sm-6 col-md-4 mb-4">
+                    <div class="card card-receita shadow h-100">
+
+                        {% if receita.foto %}
+                            <img src="{{ receita.foto.url }}" class="card-img-top" alt="{{ receita.nome }}">
+                        {% else %}
+                            <img src="{% static 'img/sem-imagem.png' %}" class="card-img-top" alt="Imagem padrão">
+                        {% endif %}
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase">{{ receita.nome }}</h5>
+                            <p class="card-text mb-1"><strong>Tipo:</strong> {{ receita.get_tipo_display }}</p>
+                            <p class="card-text mb-3"><strong>Sabor:</strong> {{ receita.get_gosto_display }}</p>
+
+                            <div class="d-flex justify-content-between w-100 gap-2">
+                                <a href="{% url 'detalhar-receita' receita.id %}" class="btn btn-sm btn-light flex-fill">
+                                    <i class="fas fa-search"></i> Detalhes
+                                </a>
+                                <a href="{% url 'editar-receita' receita.id %}" class="btn btn-sm btn-primary-custom flex-fill">
+                                    <i class="fas fa-edit"></i> Editar
+                                </a>
+                                <a href="{% url 'deletar-receita' receita.id %}" class="btn btn-sm btn-light flex-fill">
+                                    <i class="fas fa-trash"></i> Excluir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
         </div>
-      {% endfor %}
-    </div>
-  
-    <div class="d-flex justify-content-end mt-3">
-      <a href="" class="btn btn-outline-primary">
-        Mais Receitas
-      </a>
-    </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'exibir-receitas' %}" class="btn btn-primary-custom">
+                <i class="fas fa-list"></i> Ver Mais Receitas
+            </a>
+        </div>
+    {% else %}
+        <div class="alert text-center">
+            Nenhuma receita cadastrada. 🍳
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

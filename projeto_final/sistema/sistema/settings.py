@@ -128,4 +128,8 @@ STATICFILES_DIRS = [BASE_DIR/'sistema'/'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Configurações para arquivos de mídia
+MEDIA_URL = '/receita/'  # URL que será usada para acessar as imagens
+MEDIA_ROOT = BASE_DIR / ''
+
 LOGUIN_URL = '/'

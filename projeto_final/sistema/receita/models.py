@@ -6,3 +6,7 @@ class Receita(models.Model):
     nome = models.CharField(max_length=100, null=True, blank=True)
     tipo = models.SmallIntegerField(choices=OPCOES_TIPO, null=True, blank=True)
     gosto = models.SmallIntegerField(choices=OPCOES_GOSTO, null=True, blank=True)
+    foto = models.ImageField(blank=True, null=True, upload_to='receita/fotos')
+
+    def __str__(self):
+        return self.nome if self.nome else 'Receita sem nome'

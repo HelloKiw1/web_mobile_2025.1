@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Detalhes da Receita{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <div class="card mx-auto shadow" style="max-width: 500px;">
+        
+        {% if object.foto %}
+            <img src="{{ object.foto.url }}" 
+                class="card-img-top" 
+                alt="{{ object.nome }}" 
+                style="object-fit: cover; height: 250px;">
+        {% else %}
+            <img src="{% static 'img/sem-imagem.png' %}" 
+                class="card-img-top" 
+                alt="Sem imagem" 
+                style="object-fit: cover; height: 250px;">
+        {% endif %}
+
+        <div class="card-body text-center">
+            <h4 class="card-title text-uppercase" style="color: #000;">
+                {{ object.nome }}
+            </h4>
+
+            <p class="card-text"><strong>Tipo:</strong> {{ object.get_tipo_display }}</p>
+            <p class="card-text"><strong>Sabor:</strong> {{ object.get_gosto_display }}</p>
+
+            <div class="mt-4">
+                <a href="{% url 'listar-receita' %}" 
+                    class="btn btn-light" 
+                    style="border: 2px solid #000; font-weight: bold;">
+                    <i class="fas fa-arrow-left"></i> Voltar à listagem
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
