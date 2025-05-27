@@ -10,11 +10,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-       #migrations.AddField(
-            #model_name='veiculo',
-            #name='foto',
-            #field=models.ImageField(blank=True, null=True, upload_to='veiculo/fotos'),
-        #),
+       migrations.AddField(
+            model_name='veiculo',
+            name='foto',
+            field=models.ImageField(blank=True, null=True, upload_to='veiculo/fotos'),
+        ),
         migrations.AddField(
             model_name='veiculo',
             name='preco',

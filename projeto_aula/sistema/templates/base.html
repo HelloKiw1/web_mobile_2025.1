@@ -180,24 +180,6 @@
   <a href="/logout/" class="btn btn-sm btn-light">
     Logout
   </a>
-
-  <!-- Badge sobreposto -->
-  {% if user.is_authenticated %}
-    <div style="
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      background-color: #f7931e;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    ">
-      {{ user.username }}
-    </div>
-  {% endif %}
 </div>
   </div>
 

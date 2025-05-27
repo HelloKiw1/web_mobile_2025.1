@@ -5,36 +5,143 @@
 
 {% block conteudo %}
 <div class="container mt-5">
-    <div class="card mx-auto shadow" style="max-width: 500px;">
+    <div class="card mx-auto shadow" style="max-width: 550px;">
         
+        <!-- ✅ Imagem -->
         {% if object.foto %}
-            <img src="{{ object.foto.url }}" 
-                class="card-img-top" 
-                alt="{{ object.nome }}" 
-                style="object-fit: cover; height: 250px;">
+            <img src="{{ object.foto.url }}" class="card-img-top" alt="{{ object.nome }}" style="object-fit: cover; height: 250px;">
         {% else %}
-            <img src="{% static 'img/sem-imagem.png' %}" 
-                class="card-img-top" 
-                alt="Sem imagem" 
-                style="object-fit: cover; height: 250px;">
+            <img src="{% static 'img/sem-imagem.png' %}" class="card-img-top" alt="Sem imagem" style="object-fit: cover; height: 250px;">
         {% endif %}
 
+        <!-- ✅ Informações principais -->
         <div class="card-body text-center">
-            <h4 class="card-title text-uppercase" style="color: #000;">
-                {{ object.nome }}
-            </h4>
+            <h2 class="card-title text-uppercase fw-bold">{{ object.nome }}</h2>
 
-            <p class="card-text"><strong>Tipo:</strong> {{ object.get_tipo_display }}</p>
-            <p class="card-text"><strong>Sabor:</strong> {{ object.get_gosto_display }}</p>
+            <div class="row text-center my-3">
+                <div class="col-3">
+                    <p><strong>Tipo: </strong><br>{{ object.get_tipo_display|default:"-" }}</p>
+                </div>
+                <div class="col-3">
+                    <p><strong>Sabor: </strong>{{ object.get_gosto_display|default:"-" }}</p>
+                </div>
+                <div class="col-3">
+                    <p><strong>Dificuldade:  </strong>{{ object.get_dificuldade_display|default:"-" }}</p>
+                </div>
+                <div class="col-2">
+                    <p>{{ object.porcoes|default:"-" }} <strong>Porções</strong></p>
+                </div>
+            </div>
 
+            <div class="row text-center mb-4">
+                <div class="col-6">
+                    {% if object.tempo_preparo %}
+                    <button class="btn btn-outline-dark" onclick="toggleContagem()">
+                        ⏱️ Tempo: {{ object.tempo_preparo }}
+                    </button>
+                    {% else %}
+                    <p><strong>⏱️ Tempo:</strong><br>-</p>
+                    {% endif %}
+                </div>
+                <div class="col-6">
+                    <p>{{ object.porcoes|default:"-" }} <strong>Porções</strong></p>
+                </div>
+            </div>
+
+            <!-- ✅ Ingredientes -->
+            {% if object.ingredientes %}
+            <div class="section">
+                <h4>Ingredientes</h4>
+                <hr>
+                <p class="text-start">
+                    {{ object.ingredientes|linebreaksbr }}
+                </p>
+            </div>
+            {% endif %}
+
+            <!-- ✅ Modo de Preparo -->
+            {% if object.receita %}
+            <div class="section mt-4">
+                <h4>Modo de Preparo</h4>
+                <hr>
+                <p class="text-start">
+                    {{ object.receita|linebreaksbr }}
+                </p>
+            </div>
+            {% endif %}
+
+            <!-- ✅ Botão Voltar -->
             <div class="mt-4">
-                <a href="{% url 'listar-receita' %}" 
-                    class="btn btn-light" 
-                    style="border: 2px solid #000; font-weight: bold;">
+                <a href="{% url 'listar-receita' %}" class="btn btn-light border border-dark fw-bold">
                     <i class="fas fa-arrow-left"></i> Voltar à listagem
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+<!-- 🔥 Contagem Regressiva -->
+<div id="cronometro" class="cronometro">
+    <div class="cronometro-content">
+        <span id="tempo">00:00:00</span>
+        <div class="mt-2">
+            <button class="btn btn-success btn-sm" onclick="iniciar()">Iniciar</button>
+            <button class="btn btn-warning btn-sm" onclick="pausar()">Pausar</button>
+            <button class="btn btn-danger btn-sm" onclick="zerar()">Fechar</button>
+        </div>
+    </div>
+</div>
+
+<!-- 🔥 Script -->
+<script>
+const tempo_preparo = "{{ object.tempo_preparo|default:'00:00:00' }}";
+let partes = tempo_preparo.split(':');
+let tempo_total = (+partes[0]) * 3600 + (+partes[1]) * 60 + (+partes[2]);
+let tempo_restante = tempo_total;
+let intervalo = null;
+
+function toggleContagem() {
+    const cronometro = document.getElementById('cronometro');
+    cronometro.style.display = (cronometro.style.display === 'none') ? 'block' : 'none';
+}
+
+function iniciar() {
+    if (intervalo) return;
+    if (tempo_restante <= 0) tempo_restante = tempo_total;
+    intervalo = setInterval(() => {
+        if (tempo_restante <= 0) {
+            clearInterval(intervalo);
+            intervalo = null;
+            alert("⏰ Tempo finalizado!");
+            return;
+        }
+        tempo_restante--;
+        atualizarDisplay();
+    }, 1000);
+}
+
+function pausar() {
+    clearInterval(intervalo);
+    intervalo = null;
+}
+
+function zerar() {
+    clearInterval(intervalo);
+    intervalo = null;
+    tempo_restante = tempo_total;
+    atualizarDisplay();
+    document.getElementById('cronometro').style.display = 'none';
+}
+
+function atualizarDisplay() {
+    let horas = Math.floor(tempo_restante / 3600);
+    let minutos = Math.floor((tempo_restante % 3600) / 60);
+    let segundos = tempo_restante % 60;
+    document.getElementById('tempo').innerText = 
+        `${horas.toString().padStart(2, '0')}:` +
+        `${minutos.toString().padStart(2, '0')}:` +
+        `${segundos.toString().padStart(2, '0')}`;
+}
+document.addEventListener('DOMContentLoaded', atualizarDisplay);
+</script>
 {% endblock %}
