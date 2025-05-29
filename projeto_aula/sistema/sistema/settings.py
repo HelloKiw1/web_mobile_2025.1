@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u2g47&99-y6w%4yg82msyl3tzj@%-=s2brzeeo$ffmmes$=9s=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'veiculo.apps.VeiculoConfig',
     'anuncio.apps.AnuncioConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 
 ]
 
@@ -50,7 +53,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'sistema.urls'
 
@@ -109,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'pt-BR'
 
 TIME_ZONE = 'UTC'
 
@@ -135,3 +146,5 @@ MEDIA_URL = '/veiculo/'  # URL que será usada para acessar as imagens
 MEDIA_ROOT = BASE_DIR / ''
 
 LOGUIN_URL = '/'
+
+CORS_ORIGIN_ALLOW_ALL = True

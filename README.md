@@ -1,4 +1,3 @@
-
 # 🌐 WEB_MOBILE_2025.1  
 ## 📘 Diário de Aula – Desenvolvimento Web Mobile
 
@@ -211,6 +210,102 @@ class TesteModelVeiculo(TestCase):
 
 ```bash
 python manage.py test
+```
+
+---
+
+### **28 de maio – Aula 10: API REST com Django REST Framework**
+
+🔹 **Conteúdo teórico apresentado:**  
+- [Cap. 13 – APIs – Interface de Programação de Aplicações](https://www.notion.so/Cap-13-API-s-Interface-de-programa-o-de-aplica-es-13d6f8b90b2446a6a75d62e13db330cc?pvs=4)
+
+🧪 **Atividades práticas realizadas:**  
+
+- Instalação do Django REST Framework e CORS Headers:
+
+```bash
+pip install djangorestframework
+pip install django-cors-headers
+```
+
+- Configurações em `settings.py` (ou `config.py`):
+
+```python
+ALLOWED_HOSTS = ['*']
+
+INSTALLED_APPS = [
+    ...,
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    ...,
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
+```
+
+- Criar o serializer para o modelo Veículo (`veiculo/serializer.py`):
+
+```python
+from veiculo.models import Veiculo
+from rest_framework import serializers
+
+class SerializadorVeiculo(serializers.ModelSerializer):
+    class Meta:
+        model = Veiculo
+        exclude = []
+```
+
+- Criar a API view para listar veículos (`veiculo/views.py`):
+
+```python
+from rest_framework.generics import ListAPIView
+from veiculo.serializers import SerializadorVeiculo
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import permissions
+
+class APIListarVeiculos(ListAPIView):
+    serializer_class = SerializadorVeiculo
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
+```
+
+- Atualizar rotas em `veiculo/urls.py`:
+
+```python
+from django.urls import path
+from veiculo.views import *
+
+urlpatterns = [
+    path('api/', APIListarVeiculos.as_view(), name='api-listar-veiculos'),
+    path('foto/<str:arquivo>', FotoVeiculo.as_view(), name='foto-veiculo'),
+]
+```
+
+- Teste da API (usar o token do usuário autenticado):
+
+```bash
+curl http://127.0.0.1:8000/veiculo/api/ -H 'Authorization: Token SEU_TOKEN_AQUI'
+```
+
+- Verificação de funcionamento:
+
+```bash
+./manage.py check
 ```
 
 ---
