@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+  <form (submit)="autenticarUsuario()">
+    <ion-item>
+      <ion-input label="Usuário" type="text" name="usuario" [(ngModel)]="instancia.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Senha" type="password" name="senha" [(ngModel)]="instancia.password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="autenticarUsuario()">
+      Autenticar
+    </ion-button>
+  </form>
+</ion-content>
