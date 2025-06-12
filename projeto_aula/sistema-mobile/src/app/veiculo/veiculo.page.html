@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+   </ion-buttons>
+    <ion-title>Lista de veículos</ion-title>
+    <ion-text slot="end" class="ion-margin-end">
+      <h3>{{usuario.nome}}</h3>
+    </ion-text>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Desenvolvimento webmobile</ion-card-title>
+      <ion-card-subtitle>Aplicativo veículos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item-sliding *ngFor="let veiculo of lista_veiculos">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img *ngIf="veiculo.foto" [src]="veiculo.foto" />
+              <img *ngIf="!veiculo.foto" src="../../assets/imgs/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>
+              {{veiculo.nome_marca}} {{veiculo.modelo | uppercase}} {{veiculo.nome_cor}} {{veiculo.nome_combustivel}}
+            </ion-label>
+            <ion-label slot="end" color="primary">
+              {{veiculo.ano}}
+            </ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="danger" (click)="excluirVeiculo(veiculo.id)">
+              Excluir
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>        
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,13 +1,55 @@
-<ion-content [fullscreen]="true">
-  <form (submit)="autenticarUsuario()">
-    <ion-item>
-      <ion-input label="Usuário" type="text" name="usuario" [(ngModel)]="instancia.username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Senha" type="password" name="senha" [(ngModel)]="instancia.password"></ion-input>
-    </ion-item>
-    <ion-button expand="block" (click)="autenticarUsuario()">
-      Autenticar
-    </ion-button>
-  </form>
-</ion-content>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Projeto Aula</title>
+  <link href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f7fc;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background-color: rgba(255, 193, 7, 0.75);
+      padding: 5px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 15px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    Projeto em Sala
+  </div>
+
+  <ion-content [fullscreen]="true">
+    <div class="login-container">
+      <h2 class="text-center mb-4">Login</h2>
+      <form (submit)="autenticarUsuario()">
+        <ion-item>
+          <ion-input label="Usuário" type="text" name="usuario" [(ngModel)]="instancia.username" placeholder="Digite seu usuário"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Senha" type="password" name="senha" [(ngModel)]="instancia.password" placeholder="Digite sua senha"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="autenticarUsuario()">
+          Autenticar
+        </ion-button>
+      </form>
+    </div>
+  </ion-content>
+
+  <script src="https://cdn.jsdelivr.net/npm/@ionic/core@5.7.4/dist/ionic/ionic.bundle.js"></script>
+</body>
+</html>
