@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Projeto Aula</title>
+  <title>Login - CARjá</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #f4f7fc;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
     }
+
+    .vh-100 {
+      height: 100vh;
+    }
+
     .login-container {
       max-width: 400px;
       margin: 50px auto;
@@ -17,43 +26,125 @@
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .header {
-      background-color: rgba(255, 193, 7, 0.75);
-      padding: 5px 0;
-      text-align: center;
-      font-weight: bold;
-      font-size: 15px;
-      color: black;
+
+    /* Estilo do formulário de login */
+    .form-container {
+      width: 23rem;
+      padding-top: 50px;
     }
+
+    .form-outline {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-info {
+      background-color: #e67e00;
+      border-color: #e67e00;
+    }
+
+    .form-label {
+      font-size: 14px;
+    }
+
+    /* Estilo de boas-vindas */
+    .welcome-message {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Estilo de links e botões */
+    .btn-primary-custom {
+      background-color: #f7931e;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #e67e00;
+    }
+
+    .text-muted {
+      font-size: 14px;
+    }
+
+    .footer {
+      font-size: 20px;
+      color: #6c757d;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="header">
-    Projeto em Sala
-  </div>
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
 
-  <div class="login-container">
-    <h2 class="text-center mb-4">Login</h2>
-    <form method="POST" action="">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="username">Usuário</label>
-        <input type="text" class="form-control" id="username" name="usuario" placeholder="Digite seu usuário" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password" name="senha" placeholder="Digite sua senha" required>
-      </div>
-      {% if mensagem %}
-      <div class="alert alert-danger text-center">{{ mensagem }}</div>
-      {% endif %}
-      <button type="submit" class="btn btn-primary btn-block mt-4">Entrar</button>
-    </form>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form method="POST" action="" class="form-container">
+            
+            {% csrf_token %}
+                    <!-- Mensagem de boas-vindas -->
+        <div class="welcome-message">
+          Seja bem-vindo ao CARjá
+        </div>
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="text" id="form2Example18" class="form-control form-control-lg" name="usuario" placeholder="Digite seu usuário" required>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="password" id="form2Example28" class="form-control form-control-lg" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            {% if mensagem %}
+            <div class="alert alert-danger text-center">{{ mensagem }}</div>
+            {% endif %}
+
+            <div class="pt-1 mb-4">
+              <button type="submit" class="btn btn-primary-custom btn-lg btn-block">Entrar</button>
+            </div>
+
+            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Esqueceu a senha?</a></p>
+            <p>Não tem uma conta? <a href="#!" class="link-info">Cadastre-se aqui</a></p>
+
+          </form>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://images.unsplash.com/photo-1679838285912-a889efada0a2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: right;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

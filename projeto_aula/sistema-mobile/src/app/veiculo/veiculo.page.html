@@ -1,42 +1,44 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header [translucent]="false">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-   </ion-buttons>
-    <ion-title>Lista de veículos</ion-title>
-    <ion-text slot="end" class="ion-margin-end">
-      <h3>{{usuario.nome}}</h3>
-    </ion-text>
+    </ion-buttons>
+    <!-- Adicionando a imagem com a classe para centralizar -->
+    <div class="toolbar-image-container">
+      <img src="/assets/icon/CARja.png" alt="Carja Logo" style="height: 40px;">
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card>
+
+<ion-content [fullscreen]="true" class="content-padding">
+  <ion-card class="ion-shadow-xl ion-margin-top">
     <ion-card-header>
-      <ion-card-title>Desenvolvimento webmobile</ion-card-title>
-      <ion-card-subtitle>Aplicativo veículos</ion-card-subtitle>
+      <ion-card-title>CARjá</ion-card-title>
+      <ion-card-subtitle>Lista de Veiculos</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item-sliding *ngFor="let veiculo of lista_veiculos">
           <ion-item>
             <ion-thumbnail slot="start">
-              <img *ngIf="veiculo.foto" [src]="veiculo.foto" />
-              <img *ngIf="!veiculo.foto" src="../../assets/imgs/thumbnail.svg" />
+              <img *ngIf="veiculo.foto" [src]="veiculo.foto" class="thumbnail-image"/>
+              <img *ngIf="!veiculo.foto" src="../../assets/imgs/thumbnail.svg" class="thumbnail-image"/>
             </ion-thumbnail>
-            <ion-label>
-              {{veiculo.nome_marca}} {{veiculo.modelo | uppercase}} {{veiculo.nome_cor}} {{veiculo.nome_combustivel}}
+            <ion-label class="ion-text-wrap">
+              {{veiculo.nome_marca}} {{veiculo.modelo | uppercase}} <br>
             </ion-label>
-            <ion-label slot="end" color="primary">
+            <ion-label slot="end" color="primary" class="ion-text-end">
               {{veiculo.ano}}
             </ion-label>
+
+            <ion-item-options>
+              <ion-item-option color="danger" (click)="excluirVeiculo(veiculo.id)">
+                Excluir
+              </ion-item-option>
+            </ion-item-options>
           </ion-item>
-          <ion-item-options>
-            <ion-item-option color="danger" (click)="excluirVeiculo(veiculo.id)">
-              Excluir
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>        
+        </ion-item-sliding>    
       </ion-list>
     </ion-card-content>
   </ion-card>

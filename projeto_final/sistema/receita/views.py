@@ -7,6 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import FileResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 
+from rest_framework.generics import ListAPIView
+from receita.serializers import SerializadorReceita
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import permissions
+
 
 # ✅ Listar receitas (limitado ou para página inicial)
 class ListarReceitas(LoginRequiredMixin, ListView):
@@ -62,3 +67,11 @@ class FotoReceita(View):
             raise Http404('Foto não encontrada ou acesso não autorizado!')
         except Exception as exception:
             raise exception
+
+class APIListarReceitas(ListAPIView):
+    serializer_class = SerializadorReceita
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Receita.objects.all()

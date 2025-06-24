@@ -1,0 +1,71 @@
+/* Adiciona padding no ion-content */
+.content-padding {
+  padding: 16px; /* Ajuste conforme necessário */
+}
+
+.thumbnail-image {
+  width: 50px;  // Ajusta o tamanho das imagens
+  height: 50px; // Ajusta o tamanho das imagens
+  object-fit: cover; // Garante que a imagem cubra a área sem distorção
+  border-radius: 50%; // Faz as imagens ficarem redondas
+}
+
+ion-toolbar {
+  --background: #ea9811;
+  color: white;
+}
+
+.toolbar-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Faz com que o container ocupe o espaço disponível */
+}
+
+ion-title {
+  flex-grow: 1; /* Isso vai garantir que o título ocupe o restante do espaço e fique centralizado */
+}
+
+ion-card {
+  border-radius: 12px;
+  margin: 10px; 
+  box-shadow: 0 4px 6px #ea9811;
+  padding: 16px; /* Adiciona um pouco de espaçamento dentro do card */
+}
+
+ion-item {
+  padding: 12px 16px;
+}
+
+ion-label {
+  font-size: 14px;
+}
+
+ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+ion-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+ion-card-subtitle {
+  font-size: 12px;
+  text-align: center;
+  color: var(--ion-text-color);
+  font-weight: 400;
+}
+
+ion-item-options {
+  margin-right: 12px;
+}
+
+ion-item-option {
+  font-size: 14px;
+  padding: 10px;
+}
