@@ -10,7 +10,6 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='logout'),
     path('receita/', include('receita.urls'), name='receita'),
 
-    # ✅ Rotas adicionadas
     path('sobre/', Sobre.as_view(), name='sobre'),
     path('contato/', Contato.as_view(), name='contato'),
 ]

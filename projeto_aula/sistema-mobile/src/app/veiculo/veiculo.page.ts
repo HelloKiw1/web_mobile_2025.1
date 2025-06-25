@@ -12,7 +12,7 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
   selector: 'app-veiculo',
   templateUrl: './veiculo.page.html',
   styleUrls: ['./veiculo.page.scss'],
-  imports: [IonBadge, IonIcon, IonButton, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonText, IonButtons, IonMenuButton, IonContent, IonHeader, IonTitle, IonToolbar, IonThumbnail, CommonModule, FormsModule],
+  imports: [IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonMenuButton, IonContent, IonHeader, IonToolbar, IonThumbnail, CommonModule, FormsModule],
   providers: [Storage]
 })
 export class VeiculoPage implements OnInit {
