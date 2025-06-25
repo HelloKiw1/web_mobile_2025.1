@@ -1,0 +1,45 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- Adicionando a imagem com a classe para centralizar -->
+    <div class="toolbar-image-container">
+      <img src="/assets/icon/favicon.png" alt="Cozinha nas Canetas" style="height: 40px;">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="content-padding">
+  <ion-card class="ion-shadow-xl ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Cozinha</ion-card-title>
+      <ion-card-subtitle>Lista de Receitas</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item-sliding *ngFor="let receita of lista_receitas">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img *ngIf="receita.foto" [src]="receita.foto" class="thumbnail-image"/>
+              <img *ngIf="!receita.foto" src="../../assets/imgs/thumbnail.svg" class="thumbnail-image"/>
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              {{receita.nome}}<br>
+            </ion-label>
+            <ion-label slot="end" color="primary" class="ion-text-end">
+              {{receita.porcoes}} porções<br>
+            </ion-label>
+
+            <ion-item-options>
+              <ion-item-option color="danger" (click)="excluirReceita(receita.id)">
+                Excluir
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item>
+        </ion-item-sliding>    
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
