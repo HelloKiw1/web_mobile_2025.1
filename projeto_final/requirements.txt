@@ -1,0 +1,8 @@
+# Requirements inferred from the project's virtual environment (projeto_final/virtual_final)
+Django==5.2
+djangorestframework==3.16.0
+django-cors-headers==4.7.0
+psycopg2-binary==2.9.10
+Pillow==11.2.1
+sqlparse==0.5.3
+asgiref==3.8.1

@@ -1,0 +1,104 @@
+# General .gitignore for the repository (Python / Django / Node / Ionic / IDEs / OS)
+
+## Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+lib/python*/site-packages/
+pip-wheel-metadata/
+*.log
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+virtualenv/
+**/venv/
+**/env/
+virtual_final/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+## Django
+*.sqlite3
+*.pyc
+local_settings.py
+db.sqlite3
+media/
+uploads/
+staticfiles/
+
+# Don't ignore migrations themselves, but ignore their caches
+__pycache__/
+
+## Node / Ionic / Angular
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+package-lock.json
+/.angular/
+/.capacitor/
+/.cordova/
+/.ionic/
+www/
+dist/
+build/
+android/
+ios/
+.expo/
+.turbo/
+.parcel-cache/
+.sass-cache/
+
+## IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+## System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Tests and coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+## Packaging
+*.egg
+*.tar.gz
+
+## Environment variables / secrets
+.env
+.env.*
+.secret
+secrets.json
+
+## Python bytecode
+*.pyc
+
+## Others
+*.pyo
+*.pyd
+*.pid
+*.log
+celerybeat-schedule

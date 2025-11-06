@@ -1,0 +1,8 @@
+# Suggested requirements for `projeto_aula` (inferred from settings.py and from projeto_final versions)
+Django==5.2
+djangorestframework==3.16.0
+django-cors-headers==4.7.0
+psycopg2-binary==2.9.10
+Pillow==11.2.1
+sqlparse==0.5.3
+asgiref==3.8.1
