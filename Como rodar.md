@@ -119,7 +119,7 @@ Criar superuser não interativamente (PowerShell):
 ```powershell
 $env:DJANGO_SUPERUSER_USERNAME = "admin"
 $env:DJANGO_SUPERUSER_EMAIL = "admin@example.com"
-$env:DJANGO_SUPERUSER_PASSWORD = "SuaSenhaForte123"
+$env:DJANGO_SUPERUSER_PASSWORD = "admin"
 python manage.py createsuperuser --noinput
 ```
 
